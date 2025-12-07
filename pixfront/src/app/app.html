@@ -1,0 +1,153 @@
+<!-- CRT Scanline Overlay -->
+<div class="scanline-overlay"></div>
+
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <span class="pixel-text">PIX</span>
+    </div>
+    
+    <button class="burger-menu" 
+            [class.active]="menuOpen" 
+            (click)="toggleMenu()"
+            aria-label="Toggle menu"
+            aria-expanded="{{menuOpen}}">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <nav class="nav" [class.active]="menuOpen">
+      <ul>
+        <li><a href="#home" (click)="closeMenu()">HOME</a></li>
+        <li><a href="#work" (click)="closeMenu()">WORK</a></li>
+        <li><a href="#contact" (click)="closeMenu()">CONTACT</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="container hero-container">
+    <div class="hero-avatar">
+      <div class="pixel-avatar">
+        <div class="avatar-inner">
+          <span class="pixel-icon">👾</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-content">
+      <h1 class="glitch-text">
+        <span>PIXEL</span>
+        <span>DEVELOPER</span>
+      </h1>
+      <p class="hero-subtitle">CRAFTING DIGITAL EXPERIENCES</p>
+      <p class="hero-description">
+        Full-stack developer specializing in modern web technologies.
+        Building the future, one pixel at a time.
+      </p>
+      <div class="hero-buttons">
+        <button class="pixel-btn primary" (click)="scrollTo('work')">
+          VIEW WORK
+        </button>
+        <button class="pixel-btn secondary" (click)="scrollTo('contact')">
+          CONTACT
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Work Section -->
+<section id="work" class="work">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="title-bracket">[</span>
+      PROJECTS
+      <span class="title-bracket">]</span>
+    </h2>
+    
+    <div class="projects-grid">
+      <article class="project-card" *ngFor="let project of projects">
+        <div class="project-image">
+          <img [src]="project.image" 
+               [alt]="project.title"
+               loading="lazy">
+          <div class="project-overlay">
+            <span class="view-text">VIEW_PROJECT</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3>{{project.title}}</h3>
+          <p>{{project.description}}</p>
+          <div class="project-tags">
+            <span class="tag" *ngFor="let tag of project.tags">{{tag}}</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="title-bracket">[</span>
+      CONNECT
+      <span class="title-bracket">]</span>
+    </h2>
+    
+    <form class="contact-form" (submit)="onSubmit($event)">
+      <div class="form-group">
+        <label for="name">NAME_</label>
+        <input type="text" 
+               id="name" 
+               name="name" 
+               [(ngModel)]="formData.name"
+               required
+               placeholder="ENTER NAME">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">EMAIL_</label>
+        <input type="email" 
+               id="email" 
+               name="email"
+               [(ngModel)]="formData.email"
+               required
+               placeholder="ENTER EMAIL">
+      </div>
+      
+      <div class="form-group">
+        <label for="message">MESSAGE_</label>
+        <textarea id="message" 
+                  name="message"
+                  [(ngModel)]="formData.message"
+                  rows="5"
+                  required
+                  placeholder="ENTER MESSAGE"></textarea>
+      </div>
+      
+      <button type="submit" class="pixel-btn primary submit-btn">
+        SEND_MESSAGE
+      </button>
+    </form>
+    
+    <div class="social-links">
+      <a href="#" class="social-link" aria-label="GitHub">GITHUB</a>
+      <a href="#" class="social-link" aria-label="LinkedIn">LINKEDIN</a>
+      <a href="#" class="social-link" aria-label="Twitter">TWITTER</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2024 PIXEL_DEV. ALL_RIGHTS_RESERVED.</p>
+  </div>
+</footer>
